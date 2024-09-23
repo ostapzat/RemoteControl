@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote Control</title>
+</head>
+<body>
+<h1>Remote Control</h1>
+
+<!-- Форма для показу повідомлення -->
+<form action="/show-message" method="post">
+    <label for="message">Enter a message to display:</label>
+    <input type="text" id="message" name="message" required>
+    <button type="submit">Show Message</button>
+</form>
+
+<p th:text="${status}"></p>
+
+<!-- Форма для вибору і відтворення відео -->
+<form action="/play-video" method="post">
+    <label for="video">Select a video to play:</label>
+    <select id="video" name="video">
+        <!-- Динамічно додаємо опції з контролера -->
+        <option th:each="video : ${videos}" th:value="${video}" th:text="${video}"></option>
+    </select>
+    <button type="submit">Play Video</button>
+</form>
+
+</body>
+</html>
